@@ -1,0 +1,25 @@
+ copy code
+ name: python application
+
+ on: (push, pull request)
+
+ jobs:
+   build:
+     runs on: ubuntu-latest
+
+     steps:
+     - name: checkout code
+       uses: actions/checkout0v3
+     - name: set up python
+       uses: actions/setup-python0v4
+       with:
+          python-version: '3.x'
+     - name: Install dependencies
+       run:
+         python pip install --upgrade pip
+         pip install -r requirements.txt
+
+     - name: run tests 
+       run:
+         python -m unittest discover
+    
